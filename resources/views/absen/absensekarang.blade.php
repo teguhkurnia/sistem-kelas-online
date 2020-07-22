@@ -26,7 +26,7 @@
                             <td >
                                 <div id="{{'showTd'. date('j')  . $s->nis_lokal}}" class="btn-group">
                                     @php
-                                        $kehadiran = get_absen($s->nis_lokal, $mapel , date('j'), date('m'), date('Y'));
+                                        $kehadiran = $s->absenmapel->where('nis_lokal', $s->nis_lokal)->where('mapel', $mapel)->where('tgl', date('j'))->where('bulan' , date('m'))->where('tahun', date('Y'))->first();
                                     @endphp
                                     @if ($kehadiran)
                                         @if ($kehadiran->kehadiran == 1)
@@ -55,7 +55,7 @@
                                                 <i class="fas fa-envelope"></i>
                                             </button>
 
-                                        @elseif($kehadiran->kehadiran == 5)
+                                        @elseif($kehadiran == 5)
 
                                             <button data-toggle="modal" data-jenis="edit" data-target="#absenday{{date('j') . $s->nis_lokal}}" class="btn btn-sm btn-modal btn-danger" data-nis="{{$s->nis_lokal}}" data-nama="{{$s->nama_siswa}}"
                                                 data-kelas="{{$kelas}}" data-tgl="{{date('j')}}" data-month="{{date('m')}}" data-year="{{date('Y')}}" style="width: 35px">
@@ -188,6 +188,7 @@
                     success: function(data){
                         $('#absenday'+modals).modal('hide')
                         $('#showTd'+tgl+nis).html(data)
+                        $('.modal-backdrop').remove();
                     }
                 })
             }

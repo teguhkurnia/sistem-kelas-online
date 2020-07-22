@@ -13,14 +13,14 @@ class AbsenController extends Controller
 
     public function index()
     {
-        $mapel = Mapel::all();
+        $mapel = Mapel::get(['id', 'nama_mapel']);
 
         return view('absen.index', compact('mapel'));
     }
 
     public function showKelas()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::get(['id', 'nama_kelas']);
 
         return view('absen.kelas', compact('kelas'));
     }
@@ -32,7 +32,7 @@ class AbsenController extends Controller
 
     public function showAbsen(Request $request)
     {
-        $siswa = Siswa::where('kelas', $request->kelas)->get();
+        $siswa = Siswa::with('absenmapel')->where('kelas', $request->kelas)->get(['id', 'nis_lokal', 'nama_siswa']);
         $mapel = $request->mapel;
         $kelas = $request->kelas;
         $jenisabsen = $request->jenisabsen;
@@ -42,8 +42,8 @@ class AbsenController extends Controller
 
     public function showAbsenBulan(Request $request)
     {
-        $siswa = Siswa::where('kelas', $request->kelas)->get();
-        $namamapel = Mapel::where('id', $request->mapel)->first('nama_mapel');
+        $siswa = Siswa::with('absenmapel')->where('kelas', $request->kelas)->get(['id', 'nis_lokal', 'nama_siswa']);
+        $namamapel = Mapel::where('id', $request->mapel)->first();
         $mapel = $request->mapel;
         $kelas = $request->kelas;
         $jenisabsen = $request->jenisabsen;

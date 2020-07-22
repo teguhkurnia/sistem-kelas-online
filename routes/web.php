@@ -3,6 +3,7 @@
 use App\Menu;
 use App\MenuItem;
 use App\Role;
+use App\Siswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use hisorange\BrowserDetect\Parser as Browser;
@@ -14,14 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('coba', function () {
-    $r = Route::getRoutes();
-    $routes = [];
-    foreach ($r as $rr) {
-        // dd(strpos($rr->getUrl(), 'ignition'));
-        if ($rr->getName() !== null && in_array('GET', $rr->methods()) && $rr->getAction()['prefix'] !== '_ignition') {
-            dump($rr);
-        }
-    }
+    return dd(Siswa::with('absenmapel')->where('kelas', 27)->first(['id', 'nis_lokal', 'nama_siswa'])->absenmapel->where($data)->first());
 });
 
 Route::get('/whoisabsent/', 'GuestController@index');

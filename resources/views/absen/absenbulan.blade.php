@@ -41,7 +41,8 @@
                                 <td >
                                     <div id="{{'showTd'. $i . $s->nis_lokal}}" class="btn-group">
                                         @php
-                                            $kehadiran = get_absen($s->nis_lokal, $mapel , $i, $bulan, $tahun);
+                                            // $kehadiran = get_absen($s->nis_lokal, $mapel , $i, $bulan, $tahun);
+                                            $kehadiran = $s->absenmapel->where('nis_lokal', $s->nis_lokal)->where('mapel', $mapel)->first();
                                         @endphp
                                         @if (in_array($i, $minggu))
                                             <div class=""></div>

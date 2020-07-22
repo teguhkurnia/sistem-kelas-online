@@ -11,21 +11,21 @@
                 <div class="container justify-content-center col-md-6">
                     <div class="">
                         <div class="form-group">
-                            <div class="row ">
+                            <div class="row">
                                 <div class="col-sm-4 col-md-4">
-                                    <label class="form-label" for="mapel">Pilih Mata Pelajaran</label>
+                                    <label class="form-label" for="kelas">Pilih Mata Kelas</label>
                                 </div>
                                 <div class="col-sm-8 col-md-8">
-                                    <select class="form-control" name="mapel" id="mapel">
-                                        <option value="kosong">- Pilih Mapel -</option>
-                                        @foreach ($mapel as $m)
-                                            <option value="{{ $m->id }}">{{ $m->nama_mapel }}</option>
+                                    <select class="form-control" name="kelas" id="kelas">
+                                        <option value="kosong">- Pilih Kelas -</option>
+                                        @foreach ($kelas as $k)
+                                            <option value="{{ $k->id }}">{{ $k->nama_kelas }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div id="show_kelas"></div>
+
                         <div class="row justify-content-center">
                             <a class="btn btn-secondary" id="lanjut" hidden data-toggle="modal" data-target="#showmodal">Lanjut</a>
                         </div>

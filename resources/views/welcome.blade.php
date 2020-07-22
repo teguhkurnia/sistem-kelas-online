@@ -10,7 +10,7 @@
   <link href="{{ asset('/dist/css/aos.css') }}" rel="stylesheet">
 
   <!-- FA -->
-  <link rel="stylesheet" href="{{asset('')}}storage/icons/font-awesome/css/all.css">
+  <link rel="stylesheet" href="{{asset('dist/css/fontawesome.all.min.css')}}">
 
   <!-- My CSS -->
   <link href="{{asset('dist')}}/css/style.css" rel="stylesheet">

@@ -12,7 +12,7 @@ function jumlah_siswa_perkelas($id_kelas)
 
 function get_absen($nis, $mapel, $tgl, $bulan, $tahun)
 {
-    $cek = Absenmapel::where([
+    $cek = Absenmapel::with('siswa')->where([
         ['nis', $nis],
         ['mapel', $mapel],
         ['tgl', $tgl],

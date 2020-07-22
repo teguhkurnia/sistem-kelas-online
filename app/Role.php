@@ -24,6 +24,6 @@ class Role extends Model
 
     public function showMenu($id)
     {
-        return $this->with('menus')->where('id', $id)->first()->menus;
+        return $this->with('menus', 'menus.items', 'menus.items.child')->where('id', $id)->first()->menus;
     }
 }

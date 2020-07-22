@@ -11,9 +11,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::all()->count();
-        $guru = Guru::all()->count();
-        $kelas = Kelas::all()->count();
+        $siswa = Siswa::count();
+        $guru = Guru::count();
+        $kelas = Kelas::count();
         return view('dashboard.index', ['siswa' => $siswa, 'guru' => $guru, 'kelas' => $kelas]);
     }
 }
